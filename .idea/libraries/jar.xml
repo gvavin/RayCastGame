@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jogamp-all-platforms/jogamp-all-platforms/jar/gluegen-rt.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jogamp-all-platforms/jogamp-all-platforms/jar/jogl-all.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/jogamp-all-platforms/jogamp-all-platforms/jar" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/jogamp-all-platforms/jogamp-all-platforms/jar" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/jogamp-all-platforms/jogamp-all-platforms/jar" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/jogamp-all-platforms/jogamp-all-platforms/jar" recursive="false" type="SOURCES" />
+  </library>
+</component>
