@@ -5,6 +5,10 @@ import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 
 public class EventListener implements GLEventListener {
+
+    public static GL2 gl = null;
+
+    public static float X = 10;
     @Override
     public void init(GLAutoDrawable drawable) {
         GL2 gl = drawable.getGL().getGL2();
@@ -18,17 +22,15 @@ public class EventListener implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable drawable) {
-        GL2 gl = drawable.getGL().getGL2();
+
+        gl = drawable.getGL().getGL2();
 
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
+        Graphics.setColor((float).3,(float).8,(float).9,(float).3);
+        Graphics.fillRect(X,25,50,50);
+        X+= 1;
+        Graphics.setRotation(X);
 
-        gl.glColor3f(0,0,1);
-        gl.glBegin(GL2.GL_QUADS);
-        gl.glVertex2f(20,20);
-        gl.glVertex2f(20,300);
-        gl.glVertex2f(120,300);
-        gl.glVertex2f(120,20);
-        gl.glEnd();
     }
 
 
