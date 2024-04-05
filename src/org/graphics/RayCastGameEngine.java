@@ -9,6 +9,7 @@ import org.graphics.EventListener;
 
 public class RayCastGameEngine {
 
+    private static GLProfile profile = null;
 
     // slightly smaller than hd screen resolution
     public static final int finScreenSizeX = 768;
@@ -20,13 +21,14 @@ public class RayCastGameEngine {
 
 
 
+
     private static GLWindow window = null;
 
 
     //initialize method that initializes the openGL window
     public static void init(){
         GLProfile.initSingleton();
-        GLProfile profile = GLProfile.get(GLProfile.GL2);
+         profile = GLProfile.get(GLProfile.GL2);
         GLCapabilities caps = new GLCapabilities(profile);
 
 
@@ -51,6 +53,10 @@ public class RayCastGameEngine {
     }
     public static int getWindowHeight(){
         return window.getHeight();
+    }
+
+    public static GLProfile getProfile(){
+        return profile;
     }
 
 

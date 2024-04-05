@@ -3,16 +3,24 @@ package org.graphics;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
+import org.resources.ImageResource;
 
 public class EventListener implements GLEventListener {
 
     public static GL2 gl = null;
 
     public static float X = 10;
+
+    public static ImageResource ram = null;
     @Override
     public void init(GLAutoDrawable drawable) {
         GL2 gl = drawable.getGL().getGL2();
         gl.glClearColor(0.5f,0,0.5f,1);
+
+        gl.glEnable(GL2.GL_TEXTURE_2D);
+
+        ram = new ImageResource("/src/Images/Awsram2.jpg");
+        System.out.println(ram.getTexture());
     }
 
     @Override
@@ -30,6 +38,7 @@ public class EventListener implements GLEventListener {
         Graphics.fillRect(X,25,50,50);
         X+= 1;
         Graphics.setRotation(X);
+        Graphics.drawImage(ram, 300,300,100,100);
 
     }
 
