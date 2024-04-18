@@ -5,6 +5,7 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.graphics.EventListener;
+import org.inputs.KeyInputs;
 
 
 public class RayCastGameEngine {
@@ -12,8 +13,8 @@ public class RayCastGameEngine {
     private static GLProfile profile = null;
 
     // slightly smaller than hd screen resolution
-    public static final int finScreenSizeX = 768;
-    public static final int finScreenSizeY = 480;
+    public static final int finScreenSizeX = 1024;
+    public static final int finScreenSizeY = 768;
 
 
     public static double unitsWide = 10;
@@ -36,15 +37,24 @@ public class RayCastGameEngine {
         window.setSize(finScreenSizeX,finScreenSizeY);
         window.setResizable(true);
         window.addGLEventListener(new EventListener());
+        window.addKeyListener(new KeyInputs());
 
 
-        FPSAnimator animator = new FPSAnimator(window, 60);
-        animator.start();
+        //FPSAnimator animator = new FPSAnimator(window, 60);
+        //animator.start();
 
 
         window.setVisible(true);
 
 
+    }
+
+    public static void render(){
+        if(window == null){
+            return;
+
+        }
+        window.display();
     }
 
 
@@ -60,7 +70,5 @@ public class RayCastGameEngine {
     }
 
 
-    public static void main(String[] args){
-        init();
-    }
+
 }

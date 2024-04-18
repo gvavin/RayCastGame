@@ -1,26 +1,38 @@
 package org.graphics;
 
+
+
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.util.awt.TextRenderer;
+import org.engine.Gameloop;
 import org.resources.ImageResource;
+import org.world.World;
+
+import java.awt.*;
+
+import static com.jogamp.graph.font.Font.*;
 
 public class EventListener implements GLEventListener {
 
     public static GL2 gl = null;
+    public static TextRenderer textRenderer;
 
-    public static float X = 10;
 
     public static ImageResource ram = null;
+
+
     @Override
     public void init(GLAutoDrawable drawable) {
         GL2 gl = drawable.getGL().getGL2();
-        gl.glClearColor(0.5f,0,0.5f,1);
+        textRenderer = new TextRenderer(new Font("Verdana", Font.BOLD,12));
+        gl.glClearColor(0,0,0,1);
 
         gl.glEnable(GL2.GL_TEXTURE_2D);
+        ram = new ImageResource("/Images/awesomepic.png");
 
-        ram = new ImageResource("/src/Images/Awsram2.jpg");
-        System.out.println(ram.getTexture());
+
     }
 
     @Override
@@ -34,12 +46,16 @@ public class EventListener implements GLEventListener {
         gl = drawable.getGL().getGL2();
 
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
-        Graphics.setColor((float).3,(float).8,(float).9,(float).3);
-        Graphics.fillRect(X,25,50,50);
-        X+= 1;
-        Graphics.setRotation(X);
-        Graphics.drawImage(ram, 300,300,100,100);
 
+        textRenderer.beginRendering(1024, 768);
+        textRenderer.setColor(0,1,0,1);
+        textRenderer.setSmoothing(true);
+
+
+        textRenderer.draw("fps:"+""+Gameloop.getFps(), (int) (725), (int) (465));
+        textRenderer.endRendering();
+
+        World.render();
     }
 
 

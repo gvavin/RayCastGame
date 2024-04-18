@@ -12,7 +12,7 @@ public class Graphics {
     private static float alpha = 1;
 
     //rotation in degrees
-    public static float rotation = 10;
+    public static float rotation = 0;
 
     public static void fillRect(float x, float y, float width, float height) {
         GL2 gl = EventListener.gl;
@@ -54,21 +54,21 @@ public class Graphics {
 
 
         gl.glTranslatef(x,y,0);
-        gl.glRotatef(rotation,0,0,1);
+        gl.glRotatef(-rotation,0,0,1);
 
 
         gl.glColor4f(red,green,blue,alpha);
         gl.glBegin(GL2.GL_QUADS);
-            gl.glTexCoord2f(x,y);
+            gl.glTexCoord2f(0,0);
             gl.glVertex2f(-width/2,-height/2);
 
-            gl.glTexCoord2f(x+width,y);
+            gl.glTexCoord2f(1,0);
             gl.glVertex2f(width/2,-height/2);
 
-            gl.glTexCoord2f(x+width,y+height);
+            gl.glTexCoord2f(1,1);
             gl.glVertex2f(width/2,height/2);
 
-            gl.glTexCoord2f(x,y+height);
+            gl.glTexCoord2f(0,1);
             gl.glVertex2f(-width/2,height/2);
         gl.glEnd();
         gl.glFlush();

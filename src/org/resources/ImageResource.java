@@ -20,14 +20,21 @@ public class ImageResource {
         URL url =ImageResource.class.getResource(path);
 
         try{
-            image = ImageIO.read(url);
+           if(url != null){
+               image = ImageIO.read(url);
+           }
+           else{
+               System.err.println("failed to load image ");
+
+           }
         } catch(IOException e){
             e.printStackTrace();
-            System.out.println("Invalid file path");
         }
         if(image != null){
             image.flush();
         }
+
+
 
     }
     public Texture getTexture (){
