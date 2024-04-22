@@ -6,6 +6,7 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.graphics.EventListener;
 import org.inputs.KeyInputs;
+import org.inputs.MouseInputs;
 
 
 public class RayCastGameEngine {
@@ -37,6 +38,7 @@ public class RayCastGameEngine {
         window.setSize(finScreenSizeX,finScreenSizeY);
         window.setResizable(true);
         window.addGLEventListener(new EventListener());
+        window.addMouseListener(new MouseInputs());
         window.addKeyListener(new KeyInputs());
 
 
