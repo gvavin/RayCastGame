@@ -10,7 +10,10 @@ public class World {
     public static boolean left = false;
     public static boolean right = false;
 
-    //public static float worldWidth =
+    public static final float TileWidth=50;
+
+    public static float worldWidth = 5000;
+    public static float worldHeight = 5000;
 
     static Player playa = new Player(100,100);
     public static void update(){

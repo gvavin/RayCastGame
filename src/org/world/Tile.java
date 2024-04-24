@@ -14,6 +14,7 @@ public class Tile {
     private static BufferedImage tileTexture;
 
 
+
     public Tile(float x, float y, int tileNum){
         tileX = x;
         tileY = y;
