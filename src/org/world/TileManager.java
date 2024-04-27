@@ -11,13 +11,15 @@ public class TileManager {
 
     public static ArrayList<Tile> TileList;
 
+    public static int[][] mapArray = new int[100][100];
+
 
     public TileManager(){
         TileList = new ArrayList<>();
-        for(float i = 1; i<=tileNumberX;i++){
-            for(float j=1;j<=tileNumberY;j++){
-                Tile bob = new Tile((i*tileNumberX),(i*tileNumberY),1);
-                TileList.add(bob);
+        for(float i = 0; i<tileNumberX;i++){
+            for(float j=0;j<tileNumberY;j++){
+                System.out.println("X:"+(i*50)+"y:"+(j*50));
+                TileList.add(new Tile((i*50),(i*50),1));
             }
         }
     }
@@ -26,8 +28,9 @@ public class TileManager {
 
     }
     public void render(){
-        for(Tile tiles: TileList){
-            tiles.Render();
+        for(int i =0; i<TileList.size();i++){
+            //System.out.println(TileList.get(i).getX());
+            TileList.get(i).Render();
         }
     }
 

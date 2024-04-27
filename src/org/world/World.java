@@ -16,8 +16,11 @@ public class World {
     public static float worldHeight = 5000;
 
     static Player playa = new Player(100,100);
+    static TileManager tileMan = new TileManager();
     public static void update(){
+
         playa.update(up,down,left,right);
+        tileMan.update();
 
 
 
@@ -25,7 +28,7 @@ public class World {
 
     public static void render(){
         playa.render();
-
-
+        tileMan.render();
     }
+
 }
