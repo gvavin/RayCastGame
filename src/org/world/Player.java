@@ -14,7 +14,7 @@ public class Player {
     private static float worldx;
     private static float worldy;
     public static double getPX(){return px;}
-    public static double getPY(){return px;}
+    public static double getPY(){return py;}
     public static float getWorldX(){return worldx;}
     public static float getWorldY(){return worldy;}
 
@@ -47,7 +47,7 @@ public class Player {
 
     public void render(){
         Graphics.fillPlayerRect(px,py,25,25);
-        Graphics.drawPlayerLine(px,py,pdx,pdy);
+        //Graphics.drawPlayerLine(px,py,pdx,pdy);
     }
 
 

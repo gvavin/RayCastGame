@@ -49,15 +49,17 @@ public class EventListener implements GLEventListener {
 
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 
+
+
+        World.render();
+
+        //draws fps counter to screen
         textRenderer.beginRendering(1024, 768);
         textRenderer.setColor(0,1,0,1);
         textRenderer.setSmoothing(true);
 
-
         textRenderer.draw("fps:"+""+Gameloop.getFps(), (int) (725), (int) (465));
         textRenderer.endRendering();
-
-        World.render();
     }
 
 

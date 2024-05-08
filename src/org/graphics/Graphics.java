@@ -12,7 +12,7 @@ public class Graphics {
     private static float alpha = 1;
 
     //rotation in degrees
-    public static float rotation = 0;
+    public static float rotation = 1;
 
     public static void fillRect(float x, float y, float width, float height) {
         GL2 gl = EventListener.gl;
@@ -115,6 +115,20 @@ public class Graphics {
         gl.glBegin(GL2.GL_LINES);
         gl.glVertex2d(x,y);
         gl.glVertex2d(x+pdx*50,y+pdy*50);
+        gl.glEnd();
+
+
+
+    }public static void castRay(double x, double y, double pdx, double pdy){
+        GL2 gl = EventListener.gl;
+
+
+
+
+        gl.glLineWidth(1);
+        gl.glBegin(GL2.GL_LINES);
+        gl.glVertex2d(x,y);
+        gl.glVertex2d(pdx,pdy);
         gl.glEnd();
 
 

@@ -6,19 +6,12 @@ import java.awt.image.BufferedImage;
 
 public class Tile {
 
-    public float width =50;
-    public float height=50;
+    public float width =64;
+    public float height=64;
 
     public float tileX;
     public float tileY;
     private BufferedImage tileTexture;
-
-
-
-
-
-
-
 
     public void Render(){
 
