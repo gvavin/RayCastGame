@@ -21,6 +21,7 @@ public class EventListener implements GLEventListener {
 
 
     public static ImageResource ram = null;
+    public static ImageResource floor = null;
 
 
     @Override
@@ -31,6 +32,7 @@ public class EventListener implements GLEventListener {
 
         gl.glEnable(GL2.GL_TEXTURE_2D);
         ram = new ImageResource("/Images/awesomepic.png");
+
 
 
     }

@@ -1,21 +1,33 @@
 package org.world;
 
 import org.graphics.Graphics;
+import java.lang.Math;
 
 public class Player {
 
 
 
-    private static float px;
-    private static float py;
+    private static double px;
+    private static double py;
+    private static double pdx;
+    private static double pdy;
     private static float worldx;
     private static float worldy;
-    public static float getPX(){return px;}
-    public static float getPY(){return px;}
+    public static double getPX(){return px;}
+    public static double getPY(){return px;}
     public static float getWorldX(){return worldx;}
     public static float getWorldY(){return worldy;}
 
+    public Player(double startX, double startY){
+        px = startX;
+        py = startY;
+
+        pdx = Math.cos((((Graphics.rotation)*(Math.PI/180))));
+        pdy = Math.sin((((Graphics.rotation)*(Math.PI/180))));
+    }
+
     public void update(boolean up,boolean down, boolean left, boolean right){
+
 
         if(up){
             moveUp();
@@ -24,32 +36,54 @@ public class Player {
             moveDown();
         }
         if(left){
-            moveLeft();
+            lookLeft();
         }
         if(right){
-            moveRight();
+            lookRight();
         }
+
+
     }
 
     public void render(){
-        Graphics.fillRect(px,py,50,50);
+        Graphics.fillPlayerRect(px,py,25,25);
+        Graphics.drawPlayerLine(px,py,pdx,pdy);
     }
 
-    public Player(float startX, float startY){
-        px = startX;
-        py = startY;
-    }
+
 
     public void moveUp(){
-        py-=5;
+        px+=pdx;
+        py+=pdy;
     }
     public void moveDown(){
-        py+=5;
+        px-=pdx;
+        py-=pdy;
     }
-    public void moveLeft(){
-        px-=5;
+    public void lookLeft(){
+        subtractPlayerAngle(1);
+        if(((Graphics.rotation)*(Math.PI/180))<0){
+            Graphics.setRotation(360);
+        }
+        pdx = Math.cos((((Graphics.rotation)*(Math.PI/180))));
+        pdy = Math.sin((((Graphics.rotation)*(Math.PI/180))));
+
     }
-    public void moveRight(){
-        px+=5;
+    public void lookRight(){
+        addPlayerAngle(1);
+        if(((Graphics.rotation)*(Math.PI/180))>(2*Math.PI)){
+            Graphics.setRotation(0);
+        }
+        pdx = Math.cos((((Graphics.rotation)*(Math.PI/180))));
+        pdy = Math.sin((((Graphics.rotation)*(Math.PI/180))));
+    }
+
+    public void addPlayerAngle(float rotation){
+        float rotAmount = Graphics.rotation+rotation;
+        Graphics.setRotation(rotAmount);
+    }
+    public void subtractPlayerAngle(float rotation){
+        float rotAmount = Graphics.rotation-rotation;
+        Graphics.setRotation(rotAmount);
     }
 }

@@ -54,7 +54,7 @@ public class Graphics {
 
 
         gl.glTranslatef(x,y,0);
-        gl.glRotatef(-rotation,0,0,1);
+        //gl.glRotatef(-rotation,0,0,1);
 
 
         gl.glColor4f(red,green,blue,alpha);
@@ -75,8 +75,49 @@ public class Graphics {
 
         gl.glBindTexture(GL2.GL_TEXTURE_2D, 0);
 
-        gl.glRotatef(-rotation,0,0,1);
+        //gl.glRotatef(-rotation,0,0,1);
         gl.glTranslatef(-x,-y,0);
+
+    }
+    public static void fillPlayerRect(double x, double y, double width, double height) {
+        GL2 gl = EventListener.gl;
+
+        gl.glTranslated(x,y,0);
+        gl.glRotated(rotation,0,0,1);
+
+
+        gl.glColor3d(red,green,blue);
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glVertex2d(-width/2,-height/2);
+        gl.glVertex2d(width/2,-height/2);
+        gl.glVertex2d(width/2,height/2);
+        gl.glVertex2d(-width/2,height/2);
+        gl.glEnd();
+
+        gl.glRotated(-rotation,0,0,1);
+        gl.glTranslated(-x,-y,0);
+        /*
+        gl.glLineWidth(1);
+        gl.glBegin(GL2.GL_LINES);
+        gl.glVertex2d(x,y);
+        gl.glVertex2d(x+(pdx*50),y+(pdy*50));
+        gl.glEnd();*/
+
+    }
+
+    public static void drawPlayerLine(double x, double y, double pdx, double pdy){
+        GL2 gl = EventListener.gl;
+
+
+
+
+        gl.glLineWidth(1);
+        gl.glBegin(GL2.GL_LINES);
+        gl.glVertex2d(x,y);
+        gl.glVertex2d(x+pdx*50,y+pdy*50);
+        gl.glEnd();
+
+
 
     }
 
