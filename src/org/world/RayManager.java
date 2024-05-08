@@ -46,7 +46,7 @@ public class RayManager {
                 mx = ((int)(rx)>>6);
                 my = ((int)(ry)>>6);
                 mp = my*10+mx;
-                if(mp<100 && )
+               // if(mp<100 && )
             }
         }
     }
