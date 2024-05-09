@@ -16,6 +16,7 @@ public class RayManager {
     public static double ra;
     public static double xo;
     public static double yo;
+    public static double dist;
 
     public static double px = Player.getPX();
     public static double py = Player.getPY();
@@ -23,6 +24,7 @@ public class RayManager {
     public static double P2 = (Math.PI/2);
     public static double P3 = ((3*Math.PI)/2);
     public static double deg1 = 0.0174533;
+    public static double wallShade =1;
 
     public static double distance(double ax, double ay, double bx, double by, double ang){
         return(Math.sqrt( (bx-ax)*(bx-ax) + (by-ay)*(by-ay) ) );
@@ -35,7 +37,7 @@ public class RayManager {
         if(ra>Math.PI*2){ra-=Math.PI*2;}
 
 
-        for(int r = 0; r<60;r++ ){
+        for(r = 0; r<60;r++ ){
 
             //horizontal line check
             dof = 0;
@@ -120,11 +122,24 @@ public class RayManager {
             if(disV<disH){
                 rx = vx;
                 ry = vy;
+                dist = disV;
+                wallShade = .9;
             }if(disH<disV){
                 rx = hx;
                 ry = hy;
+                dist = disH;
+                wallShade = .7;
             }
             Graphics.castRay(Player.getPX(),Player.getPY(),rx,ry);
+            //draw walls
+            double ca = ((Graphics.rotation)*(Math.PI/180))-ra;
+            if(ca<0){ca+=Math.PI*2;}
+            if(ca>Math.PI*2){ca-=Math.PI*2;}
+            dist = dist*(Math.cos(ca));
+            double lineH = (64*320)/dist;
+            double lineO = 160-(lineH/2);
+            if(lineH>320){lineH = 320;}
+            Graphics.drawRays((int)r,(int)lineH,(int)lineO,wallShade);
             ra+= deg1;
             if(ra<0){ra+=Math.PI*2;}
             if(ra>Math.PI*2){ra-=Math.PI*2;}

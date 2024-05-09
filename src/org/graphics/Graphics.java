@@ -134,6 +134,17 @@ public class Graphics {
 
 
     }
+    public static void drawRays(int r,int lineH,int lineO, double wallShade){
+        GL2 gl = EventListener.gl;
+
+        gl.glColor3d(wallShade,0,0);
+        gl.glLineWidth(10);
+        gl.glBegin(GL2.GL_LINES);
+        gl.glVertex2i((r*10)+530,0+lineO);
+        gl.glVertex2i((r*10)+530,lineH+lineO);
+        gl.glEnd();
+
+    }
 
     public static void setRotation(float r){
         rotation = r;

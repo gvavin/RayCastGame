@@ -15,7 +15,7 @@ public class RayCastGameEngine {
 
     // slightly smaller than hd screen resolution
     public static final int finScreenSizeX = 1024;
-    public static final int finScreenSizeY = 768;
+    public static final int finScreenSizeY = 512;
 
 
     public static double unitsWide = 10;
